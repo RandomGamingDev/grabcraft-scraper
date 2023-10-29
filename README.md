@@ -8,3 +8,5 @@ This project should be called by running `python scraper.py` will put all of the
 The structure is organized from `grabcraft-builds` like this: `<section>/<subsection>/<subsubsection>/<build name>` with `data.json` and `meta.yml` in the end directory. <br/>
 `data.json` contains the actual render object itself
 `meta.yml` contains some important meta data that can be used which are the `name`, `dimensions`, and `tags`. (Other data can be easy obtained by editing the underlying library for getting the `RenderObject` and its metadata and the script for scraping the data)
+
+Note: This library is synchronous partially so that we don't cause the website to block us, and partially because I don't really need the speed, so I didn't feel like adding those extra optimizations. However you're welcome to add things like async/await or multithreading and send a pull request if you'd be interested :D
