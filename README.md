@@ -1,6 +1,8 @@
 # grabcraft-scraper
 A little Python script made for scraping data from grabcraft, which can then be used for things like machine learning and data analysis projects and can be transformed to litematica files with https://github.com/RandomGamingDev/grabcraft-to-schema (Sadly, I can't release the dataset since you aren't allowed to share downloaded content)
 
+Note: It isn't working rn, I'll fix it soon
+
 It'll take a while for it to execute and it doesn't have any progress bars, but it is working.
 
 Download the requirements from `requirements.txt`
