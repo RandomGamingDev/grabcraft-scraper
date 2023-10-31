@@ -55,13 +55,13 @@ for section in all_sections:
         # Get & make the directory for the section
         section_dir = f"{ builds_dir }/{ subsuburl }"
         safe_mkdir(section_dir)
-        print(f"Started scraping section { subsuburl }!")
+        print(f"Scraping section { subsuburl }!")
         continue
     
     # Get & make the directory for the subsection
     subsection_dir = f"{ section_dir }/{ subsuburl }"
     safe_mkdir(subsection_dir)
-    print(f"\tStarted scraping subsection { subsuburl }!")
+    print(f"\tScraping subsection { subsuburl }!")
 
     # Get the subdirectory's page
     suburl = f"{ site_link }/minecraft/{ subsuburl }"
@@ -106,7 +106,7 @@ for section in all_sections:
             # Create the directory for containing the build
             build_dir = f"{ subsection_dir }/{ build_link_name }"
             safe_mkdir(build_dir)
-            print(f"\t\tStarted scraping build { build_link_name }!")
+            print(f"\t\tScraping build { build_link_name }!")
 
             # Get the schema
             render_object = gts.url_to_render_object_data(build_link)
