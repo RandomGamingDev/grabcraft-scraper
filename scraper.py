@@ -55,17 +55,19 @@ for section in all_sections:
         # Get & make the directory for the section
         section_dir = f"{ builds_dir }/{ subsuburl }"
         safe_mkdir(section_dir)
-        print(f"Scraping section { subsuburl }!")
+        print(f"Scraping section { subsuburl } into { section_dir }!")
         continue
     
     # Get & make the directory for the subsection
     subsection_dir = f"{ section_dir }/{ subsuburl }"
     safe_mkdir(subsection_dir)
-    print(f"\tScraping subsection { subsuburl }!")
 
     # Get the subdirectory's page
     suburl = f"{ site_link }/minecraft/{ subsuburl }"
     subsection_res = requests.get(suburl).text
+
+    # Print progress
+    print(f"\tScraping subsection { subsuburl } from { suburl } into { subsection_dir }!")
 
     # Get the number of pages of the subdirectory from the to last button
     # Get the button
@@ -75,8 +77,12 @@ for section in all_sections:
     # Get the number of pages
     num_pages_header = "/pg/"
     num_pages_start = subsection_res.find(num_pages_header, to_last_button_start) + len(num_pages_header)
-    num_pages_end = subsection_res.find(suburl_tail, num_pages_start)
-    num_pages = int(subsection_res[num_pages_start:num_pages_end])
+    num_pages = None # The value will be determined in the following statements
+    if num_pages_start == -1:
+        num_pages_end = subsection_res.find(suburl_tail, num_pages_start)
+        num_pages = int(subsection_res[num_pages_start:num_pages_end])
+    else
+        num_pages = 1
 
     for i in range(1, num_pages + 1):
         # Get the page (We refetch the first page just in case grabcraft changes how they display things by default)
@@ -106,7 +112,7 @@ for section in all_sections:
             # Create the directory for containing the build
             build_dir = f"{ subsection_dir }/{ build_link_name }"
             safe_mkdir(build_dir)
-            print(f"\t\tScraping build { build_link_name }!")
+            print(f"\t\tScraping build { build_link_name } from { build_link } into { build_dir }!")
 
             # Get the schema
             render_object = gts.url_to_render_object_data(build_link)
