@@ -81,7 +81,7 @@ for section in all_sections:
     if num_pages_start == -1:
         num_pages_end = subsection_res.find(suburl_tail, num_pages_start)
         num_pages = int(subsection_res[num_pages_start:num_pages_end])
-    else
+    else:
         num_pages = 1
 
     for i in range(1, num_pages + 1):
