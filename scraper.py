@@ -79,10 +79,10 @@ for section in all_sections:
     num_pages_start = subsection_res.find(num_pages_header, to_last_button_start) + len(num_pages_header)
     num_pages = None # The value will be determined in the following statements
     if num_pages_start == -1:
+        num_pages = 1
+    else:
         num_pages_end = subsection_res.find(suburl_tail, num_pages_start)
         num_pages = int(subsection_res[num_pages_start:num_pages_end])
-    else:
-        num_pages = 1
 
     for i in range(1, num_pages + 1):
         # Get the page (We refetch the first page just in case grabcraft changes how they display things by default)
