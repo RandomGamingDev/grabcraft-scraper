@@ -78,7 +78,7 @@ for section in all_sections:
     num_pages_header = "/pg/"
     num_pages_start = subsection_res.find(num_pages_header, to_last_button_start) + len(num_pages_header)
     num_pages = None # The value will be determined in the following statements
-    if num_pages_start == -1:
+    if num_pages_start == -1 + len(num_pages_header):
         num_pages = 1
     else:
         num_pages_end = subsection_res.find(suburl_tail, num_pages_start)
