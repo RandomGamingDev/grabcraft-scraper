@@ -32,7 +32,7 @@ all_sections = menu.split(section_header)
 # Remove the first element which is useless
 all_sections.pop(0)
 # The current section (not subsection)
-section_dir = all_sections[0]
+section_dir = None
 # Organize the sections into subsections and sections
 for section in all_sections:
     # Getting the level of a section in the table
