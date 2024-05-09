@@ -1,0 +1,3 @@
+name: Luggage Train
+dims: [30, 3, 5]
+tags: ['airport', 'working vehicle', 'luggage', 'train', 'working vehicle']

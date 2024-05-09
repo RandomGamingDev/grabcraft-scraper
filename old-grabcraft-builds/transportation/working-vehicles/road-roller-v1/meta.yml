@@ -1,0 +1,3 @@
+name: Road Roller v1
+dims: [6, 6, 8]
+tags: ['working vehicle', 'construction vehicle', 'road roller', 'vehicle']

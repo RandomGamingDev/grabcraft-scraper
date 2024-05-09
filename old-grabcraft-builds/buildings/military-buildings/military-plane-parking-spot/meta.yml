@@ -1,0 +1,3 @@
+name: Military Plane Parking Spot
+dims: [19, 3, 20]
+tags: ['military', 'airplane', 'parking lot', 'landing']

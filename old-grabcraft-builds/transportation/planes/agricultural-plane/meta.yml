@@ -1,0 +1,3 @@
+name: Agricultural Plane
+dims: [16, 3, 13]
+tags: [' plane', 'airplane', 'vehicle', 'transportation']

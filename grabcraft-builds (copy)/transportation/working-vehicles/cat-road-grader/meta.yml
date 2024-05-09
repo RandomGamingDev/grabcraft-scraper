@@ -1,0 +1,3 @@
+name: CAT Road Grader
+dims: [7, 7, 16]
+tags: ['cat', 'road grader', 'working vehicle', 'construction vehicle', 'vehicle']

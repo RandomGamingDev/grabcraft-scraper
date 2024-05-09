@@ -1,0 +1,3 @@
+name: Electricity Pylon
+dims: [21, 35, 9]
+tags: ['electricital grid', 'electricity', 'high voltage', 'transmission tower', 'delta pylon', 'pylon']

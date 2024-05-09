@@ -1,0 +1,3 @@
+name: Small Race Car
+dims: [5, 3, 6]
+tags: ['transportation', 'car', 'vehicle', 'racing', 'rally']

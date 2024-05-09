@@ -1,0 +1,3 @@
+name: 3 Lane Highway with Exit Lane
+dims: [37, 2, 72]
+tags: ['highway', 'autobahn', 'road', 'modern road', 'asphalt', 'street']

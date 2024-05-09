@@ -1,0 +1,3 @@
+name: Fantasy Water Well
+dims: [9, 9, 9]
+tags: ['water well', 'well', 'town well', 'old well', 'fantasy well', 'draw-well']

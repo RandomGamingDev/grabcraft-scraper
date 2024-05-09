@@ -1,0 +1,3 @@
+name: Delivery Pick Up Truck
+dims: [5, 4, 9]
+tags: ['delivery truck', 'pickup truck', 'transportation', 'vehicle', 'working vehicle']

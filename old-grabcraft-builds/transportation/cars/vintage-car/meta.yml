@@ -1,0 +1,3 @@
+name: Vintage Car
+dims: [5, 4, 9]
+tags: ['vintage', 'car', 'transportation', 'historical']

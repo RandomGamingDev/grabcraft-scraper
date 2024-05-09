@@ -1,0 +1,3 @@
+name: Patrol Police Car
+dims: [5, 3, 8]
+tags: ['police', 'police car', 'patrol car', 'patrol', 'emergency', 'vehicle']

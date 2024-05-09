@@ -1,0 +1,3 @@
+name: 3 Lane Highway
+dims: [31, 2, 72]
+tags: ['highway', 'autobahn', 'street', 'road', 'modern road']

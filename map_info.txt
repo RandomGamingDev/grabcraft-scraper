@@ -1,0 +1,6 @@
+Here are the intructions for obtaining the map data for mapping block names from the custom format used by GrabCraft to the one used by MC
+
+1. Get the csv from https://github.com/gbl/GrabcraftLitematic/blob/master/blockmap.csv
+2. Clean up the data by changing the settings to that of normal csvs (with commas instead of \t as a separator) (I personally just dropped it into Google Sheets and let Google Sheets reformat it for me)
+3. Remove unnecessary parts of the data by running `clean_block_map.py`
+4. Add whatever blocks you need to add (if you do end up improving the block mappings please provide a pull request to both my repository and that of gbl)

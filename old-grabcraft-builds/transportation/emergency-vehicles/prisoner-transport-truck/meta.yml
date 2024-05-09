@@ -1,0 +1,3 @@
+name: Prisoner Transport Truck
+dims: [5, 5, 13]
+tags: ['prisoner', 'police truck', 'police van', 'transportation', 'transporter', 'vehicle', 'emergency']

@@ -1,0 +1,3 @@
+name: KFC Sign
+dims: [12, 22, 2]
+tags: ['building', 'sign', 'restaurant', 'kfc']

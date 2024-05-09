@@ -1,0 +1,3 @@
+name: School Bus
+dims: [6, 4, 17]
+tags: ['transportation', 'school', 'bus', 'schoolbus']

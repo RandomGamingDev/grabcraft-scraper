@@ -1,0 +1,3 @@
+name: Emergency Fire Truck
+dims: [6, 6, 18]
+tags: ['emergency', 'vehicle', 'fire', 'fire truck']

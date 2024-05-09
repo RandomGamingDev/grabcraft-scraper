@@ -1,0 +1,3 @@
+name: SWAT Car
+dims: [6, 4, 8]
+tags: ['emergency', 'vehicle', 'swat', 'car']

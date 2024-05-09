@@ -4,6 +4,10 @@ import os
 from litemapy import Schematic, Region, BlockState
 import json
 import csv
+import PIL
+from PIL import Image
+import blockmodel_avg_mapper as bam
+import numpy as np
 
 block_map = {}
 
@@ -30,12 +34,21 @@ def auto_block_map(grabcraft_block):
         schema_block = schema_block[:parenthesis_loc]
     # Make all of the characters lowercase like in vanilla Minecraft block codes
     schema_block = schema_block.lower()
+    # Removed all prepended spaces
+    schema_block = schema_block.strip()
     # Replace all spaces with _ like in vanilla Minecraft block codes
     schema_block = schema_block.replace(' ', '_')
     # Replace some weird formatting regarding wood items
     schema_block = schema_block.replace("_wood_", '_')
+    # Replace some weird formatting regarding wall mounted items
+    schema_block = schema_block.replace("wall-mounted_", '')
 
     return f"minecraft:{ schema_block }"
+
+def grabcraft_block_to_block(grabcraft_block):
+    global block_map
+
+    return block_map[grabcraft_block][0] if grabcraft_block in block_map else auto_block_map(grabcraft_block)
 
 class RenderObject:
     def __init__(self, obj, name, dims, tags):
@@ -44,9 +57,34 @@ class RenderObject:
         self.dims = dims
         self.tags = tags
 
-def render_object_to_schema(render_object):
-    global block_map
+def render_object_to_png_slice(render_object):
+        width, height, length = render_object.dims
+        # Create an image of the proper size (each slice is x & z which each slice having a different y)
+        # The slices are stored on one image and are stored horizontally from one another
+        image = Image.new(mode="RGBA", size=(width * height, length))
+        pixel_map = image.load()
 
+        # Get the part of the javascript containing the JSON
+        ro_text = render_object.obj[render_object.obj.find('{'):]
+        # Convert it to a json
+        ro_json = json.loads(ro_text)
+
+        for x, yz in ro_json.items():
+            for y, z in yz.items():
+                for _, data in z.items():
+                    block_loc = (int(data['x']) - 1, int(data['y']) - 1, int(data['z']) - 1)
+                    grabcraft_block = data["name"]
+                    block = grabcraft_block_to_block(grabcraft_block)
+                    block = block[block.find(':') + 1:]
+                    block_color = bam.get_block_avg_color(block)
+
+                    if isinstance(block_color, np.ndarray):
+                        block_color = tuple(block_color.astype(dtype=np.int64))
+                        pixel_map[block_loc[1] * width + block_loc[0], block_loc[2]] = block_color
+
+        return image
+
+def render_object_to_schema(render_object):
     # Get the part of the javascript containing the JSON
     ro_text = render_object.obj[render_object.obj.find('{'):]
     # Convert it to a json
@@ -63,11 +101,7 @@ def render_object_to_schema(render_object):
             for _, data in z.items():
                 block_loc = (int(data['x']) - 1, int(data['y']) - 1, int(data['z']) - 1)
                 grabcraft_block = data["name"]
-                schema_block = None
-                if grabcraft_block in block_map:
-                    schema_block = block_map[grabcraft_block][0]
-                else:
-                    schema_block = auto_block_map(grabcraft_block)
+                schema_block = grabcraft_block_to_block(grabcraft_block)
                 block = BlockState(schema_block)  # get the attributes
                 reg.setblock(block_loc[0], block_loc[1], block_loc[2], block)
     return schem
@@ -75,7 +109,7 @@ def render_object_to_schema(render_object):
 # Get the url to the render object from the webpage for the build
 def url_to_render_object_data(url):
     # Getting the webpage itself
-    res = requests.get(url).text
+    res = requests.get(url[:url.find('#')] + "#general").text
 
     # The index for the renderObject's info
     render_object_i = res.find("myRenderObject")
@@ -118,16 +152,19 @@ def url_to_render_object_data(url):
 
     return RenderObject(requests.get(render_object_url).text, name, dims, tags)
 
-# Convert the url to a schema file
-def url_to_schema(url):
-    # Make sure that the url is for the general section
-    url = url[:url.find('#')] + "#general"
-
+# Convert the url to a png slice
+def url_to_png_slice(url):
     # Get the render object, its dimensions, the tags, the name, and the data itself from the url
     render_object = url_to_render_object_data(url)
 
-    # Get the dimensions and tags
-    return render_object_to_schema(render_object) # do this with all of the data that we've gotten
+    return render_object_to_png_slice(render_object) # Generate the png slice with the data we gathered
+
+# Convert the url to a schema file
+def url_to_schema(url):
+    # Get the render object, its dimensions, the tags, the name, and the data itself from the url
+    render_object = url_to_render_object_data(url)
+
+    return render_object_to_schema(render_object) # Generate the litematica schematica with the data we gathered
 
 #load_block_map("blockmap.csv")
 #schem = url_to_schema("https://www.grabcraft.com/minecraft/gothic-medieval-church/churches#model3d")

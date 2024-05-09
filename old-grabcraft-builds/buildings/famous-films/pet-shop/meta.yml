@@ -1,0 +1,3 @@
+name: Pet Shop
+dims: [14, 5, 12]
+tags: ['building', 'pet', 'shopping', 'mall', 'shop']

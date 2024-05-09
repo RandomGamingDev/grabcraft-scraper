@@ -1,0 +1,3 @@
+name: City Bus
+dims: [6, 5, 17]
+tags: ['bus', 'transportation', 'vehicle', 'working vehicle']

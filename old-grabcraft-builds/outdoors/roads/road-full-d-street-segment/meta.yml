@@ -1,0 +1,3 @@
+name: Road Full D Street Segment
+dims: [46, 23, 23]
+tags: ['road', 'modern road', 'street', 'street lights', 'sewer']

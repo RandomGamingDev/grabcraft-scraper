@@ -1,0 +1,3 @@
+name: Mi-8T
+dims: [21, 8, 28]
+tags: ['mi-8', 'mi-8t', 'helicopter', 'transport helicopter', 'ussr']

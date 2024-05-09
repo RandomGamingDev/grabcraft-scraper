@@ -1,0 +1,3 @@
+name: Hopper Train Car
+dims: [9, 7, 17]
+tags: ['train', 'train car', 'railway']
