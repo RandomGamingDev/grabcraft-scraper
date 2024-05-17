@@ -1,2 +1,7 @@
 __pycache__
 grabcraft-builds
+bin
+include
+lib
+lib64
+pyvenv.cfg

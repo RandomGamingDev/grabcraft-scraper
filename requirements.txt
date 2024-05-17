@@ -1,8 +1,6 @@
 litemapy==0.8.1b0
 numpy==1.23.5
 pandas==2.0.3
-Pillow==9.4.0
 Pillow==10.3.0
-PyYAML==6.0
 PyYAML==6.0.1
 Requests==2.31.0
