@@ -1,3 +1,0 @@
-name: Train Tracks Segment
-dims: [9, 1, 28]
-tags: ['transportation', 'train', 'train track']

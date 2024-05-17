@@ -1,3 +1,0 @@
-name: Hospital
-dims: [29, 32, 24]
-tags: ['building', 'house', 'hospital', 'medicine']
