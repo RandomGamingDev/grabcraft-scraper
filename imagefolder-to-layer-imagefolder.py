@@ -4,8 +4,7 @@ import json
 from PIL import Image
 import pandas as pd
 
-#data_dir = input('Enter the directory to the data: ')
-data_dir = "grabcraft-builds-png-slices"
+data_dir = input('Enter the directory to the data: ')
 
 metadata_dir = f"{ data_dir }/metadata.csv"
 metadata_df = pd.read_csv(metadata_dir)

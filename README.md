@@ -13,7 +13,7 @@ The structure is organized from `grabcraft-builds` like this: `<section>/<subsec
 ### Converting to other formats
 - `schema-to-png-slice.py`: This converts all builds to a png slice equivalent where each block is represented by its average color
 - `png-slice-to-imagefolder.py` (Requirements: `schema-to-png-slice.py` needs to be run first): This converts the folder (after converting to images) to the HuggingFace ImageFolder format
-- `imagefolder-to-layer-imagefolder.py` (Requirements: `schema-to-png-slice.py`, and `png-slice-to-imagefolder.py` need to be run in that order first): This takes the png slices and makes each layer its own image instead while keeping everything in the ImageFolder format. In the ImageFolder csv the layers for each build are in order and continuous.
+- `imagefolder-to-layer-imagefolder.py` (Requirements: `schema-to-png-slice.py`, and `png-slice-to-imagefolder.py` need to be run in that order first): This takes the png slices and makes each layer its own image instead while keeping everything in the ImageFolder format. In the ImageFolder's metadata csv the layers for each build are in order and continuous.
 
 ### Note:
 This library is synchronous partially so that we don't cause the website to block us, and partially because I don't really need the speed, so I didn't feel like adding those extra optimizations. However you're welcome to add things like async/await or multithreading and send a pull request if you'd be interested :D
